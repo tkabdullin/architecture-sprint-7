@@ -1,0 +1,66 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+    name: cluster-admin-binding
+subjects:
+  - kind: User
+    name: cluster-admin-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: ClusterRole
+    name: cluster-admin
+    apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+    name: log-reader-binding
+subjects:
+  - kind: User
+    name: log-reader-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: ClusterRole
+    name: log-reader
+    apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: developer-binding
+    namespace: homeowner-namespace
+subjects:
+  - kind: User
+    name: developer-homeowner-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: developer
+    apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+    name: devops-engineer-binding
+subjects:
+  - kind: User
+    name: devops-engineer-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: ClusterRole
+    name: devops-engineer
+    apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: maintenance-engineer-binding
+    namespace: homeowner-namespace
+subjects:
+  - kind: User
+    name: maintenance-engineer-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: maintenance-engineer
+    apiGroup: rbac.authorization.k8s.io
